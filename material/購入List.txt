@@ -1,0 +1,73 @@
+/************************************************************
+今回、実験用に実際 購入した備品リスト
+************************************************************/
+
+
+■Open DMX Ethernet(ENTTEC社) 
+http://www.akaricenter.com/tokusyu/mirror_ball/dmxking-edmx1-3pin-.htm 
+
+数量:2 
+
+
+■DMX ターミネーター 終端抵抗(NEUTRIK(ノイトリック) DMX XLR3pin ターミネーター 終端抵抗)
+http://www.akaricenter.com/tokusyu/mirror_ball/cable/terminator.htm
+
+数量:2 
+
+
+■DMX変換プラグ (KUWATEC DMX変換プラグ 5ピンオス-3ピンメス)
+http://www.akaricenter.com/tokusyu/mirror_ball/cable/plug-convert.htm
+
+数量:2 
+
+
+■HOSA ( ホサ ) / EBU005 
+http://www.soundhouse.co.jp/products/detail/item/44020/ 
+
+数量:10
+
+
+■LSW5-GT-8NS/BK [ブラック]
+http://kakaku.com/item/K0000617471/
+
+数量:1
+
+
+■LD-GFAT/BM30 [3m ブルーメタリック]
+http://kakaku.com/item/K0000475610/
+
+数量:2
+
+
+■LAN Cable:10m
+エレコム
+LD-GFAT/BM100 [10m ブルーメタリック]
+10m
+http://kakaku.com/item/K0000471679/
+
+数量:2
+
+
+■テープLED
+5050テープLED 60LED/m 非防水 RGB
+http://www.akiba-led.jp/product/1296
+
+数量:5m(白基板) x 3
+
+
+■６５Ｗ級スイッチングＡＣアダプター１２Ｖ５Ａ　ＡＴＳ０６５－Ｐ１２０
+http://akizukidenshi.com/catalog/g/gM-06961/
+
+数量:12
+
+
+■大電力24チャンネルRGB 3A/CH DMX512コントローラー制御デコーダー調光器500Hzチラつき無しのスムーズな調光DMXシグナル?インジケーター?フラッシュ機能
+https://www.amazon.co.jp/gp/product/B01CCBG1SO/ref=s9_simh_gw_g79_i3_r?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=&pf_rd_r=103GDRHT3QDEMS9FE11N&pf_rd_t=36701&pf_rd_p=99ab4c28-247f-465c-815b-57b5dd6b6e1e&pf_rd_i=desktop
+
+数量:6
+
+
+■RGB用4P平行線 AWG22(0.3sq)
+http://www.akiba-led.jp/product/302
+
+数量:20m

@@ -1,0 +1,131 @@
+/************************************************************
+上から順に、全て読むとわかるように書いてあります。
+************************************************************/
+
+
+/**************************************************
+DMX to PWM converter.
+**************************************************/
+DMX to PWMについてconverterを使った方法について動画(youtube)で説明している例として
+	https://www.youtube.com/watch?v=7UW9tbifFG8
+がある。
+ここで使用しているDeviceは、
+	"WS24LU3A"
+	https://www.amazon.com/dp/B01E751APW?psc=1
+
+上記Deviceでも良かったが、同様のDeviceを調査して、今回は、こちらのDeviceを使用することとした.
+	https://www.amazon.co.jp/gp/product/B01CCBG1SO/ref=s9_simh_gw_g79_i3_r?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=&pf_rd_r=103GDRHT3QDEMS9FE11N&pf_rd_t=36701&pf_rd_p=99ab4c28-247f-465c-815b-57b5dd6b6e1e&pf_rd_i=desktop
+	
+	同じ商品のlink
+		https://www.amazon.co.jp/%E9%AB%98%E3%83%91%E3%83%AF%E3%83%BC-24%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%ABRGB-24CH-3A-DMX512%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E5%88%B6%E5%BE%A1%E3%83%87%E3%82%B3%E3%83%BC%E3%83%80%E3%83%BC%E8%AA%BF%E5%85%89%E5%99%A8500Hz%E3%83%81%E3%83%A9%E3%81%A4%E3%81%8D%E3%82%B9%E3%83%A0%E3%83%BC%E3%82%BA%E3%81%AA%E8%AA%BF%E5%85%89DMX%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB-%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%B1%E3%83%BC%E3%82%BF%E3%83%BC-%E3%83%95%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E6%A9%9F%E8%83%BD/dp/B00Q1N1NVK/ref=pd_sim_79_1?_encoding=UTF8&psc=1&refRID=9D8C3KF3FNG74V6P1BMG
+		¥6,399
+
+今回使用Deviceの英語ページは、以下であり、Q&Aなども多数あるので、英語版の方が情報が多い。
+	https://www.amazon.com/Channel-DMX512-Controller-Decoder-Project/dp/B00Q1N1NVK
+	
+	input power
+		大容量に対応するため、片側づつ、2つの別電源を指す仕様.
+	
+	Dip sw #10
+		to enable DMX input, make sure dip switch 10 is off(up).
+		
+	Electrical Current
+		3A/CH x 24ch(8 RGB Leds) = 72A. is too big.
+		
+		以下のような大容量スイッチング電源があるので、これらを使うこともできる.
+		(keyword:スイッチング電源, リニア電源)
+			12v 30a
+				https://www.amazon.com/eTopxizu-Universal-Regulated-Switching-Computer/dp/B00D7CWSCG/ref=pd_bxgy_60_img_2?_encoding=UTF8&pd_rd_i=B00D7CWSCG&pd_rd_r=4XJ5VEMAQ6KSMP5CYQJ7&pd_rd_w=iem54&pd_rd_wg=fi6su&psc=1&refRID=4XJ5VEMAQ6KSMP5CYQJ7
+				
+			直流安定化電源 DC12V 30A 360W(スイッチング電源)
+				https://www.amazon.co.jp/%E7%9B%B4%E6%B5%81%E5%AE%89%E5%AE%9A%E5%8C%96%E9%9B%BB%E6%BA%90-DC12V-30A-360W%EF%BC%88%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E9%9B%BB%E6%BA%90%EF%BC%89%E5%A4%89%E6%8F%9B%E5%99%A8%E3%83%BB%E5%A4%89%E5%9C%A7%E5%99%A8-%E5%A4%A7%E5%AE%B9%E9%87%8F%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%BF%E3%83%BC-%E6%94%BE%E7%86%B1%E3%83%95%E3%82%A1%E3%83%B3%E4%BB%98-%E4%B8%A6%E8%A1%8C%E8%BC%B8%E5%85%A5%E5%93%81/dp/0101708890
+				
+			Youtumall AC→DC 12V 30A 直流安定化電源 コンバーター スイッチング電源変換器 変圧器
+				https://www.amazon.co.jp/Youtumall-AC%E2%86%92DC-%E7%9B%B4%E6%B5%81%E5%AE%89%E5%AE%9A%E5%8C%96%E9%9B%BB%E6%BA%90-%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%BF%E3%83%BC-%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E9%9B%BB%E6%BA%90%E5%A4%89%E6%8F%9B%E5%99%A8/dp/B01KBNST9E
+				
+		But...
+		you only need to supply as much current as you are going to use.
+		でありtape Ledを短く切って使用するなら少ない電流容量でもOKなので、熱なども考慮し、今回は、以下を使用した.
+		★★★ もしinstallationなどで使用する際も、熱には十分注意すること ★★★ 
+			６５Ｗ級スイッチングＡＣアダプター１２Ｖ５Ａ ＡＴＳ０６５－Ｐ１２０
+			http://akizukidenshi.com/catalog/g/gM-06961/
+			
+		こちらの電源でOKなのか？について以下で説明する。
+		
+		
+	その他:本Deviceについて気になる書き込み
+		GとBが逆(実験の結果、たしかに逆であった)
+		
+		Be sure to put a 110ohm resister on the output of the last DMX device for termination.
+		D+ --- 110ohm --- D-
+		
+
+/**************************************************
+tape Led
+**************************************************/
+基本的な知識は以下を参照
+	http://www.peace-corp.co.jp/akibaled/page-02.html
+
+実際のテープLEDなどの商品購入は
+	http://www.akiba-led.jp/
+で、今回は
+	5050テープLED 60LED/m 非防水 RGB 1-5m [8142]
+	http://www.akiba-led.jp/product/1296	
+とした。
+
+RGBWのmodelもあったが、DMX/PWM converterが3chに適した仕様なので、こちらを選択。
+
+
+/**************************************************
+電源:ac adapter
+**************************************************/
+さて、ac adapter(電源)について、以下を参照(漫画でわかり易い)
+	http://www.diylabo.jp/annex/annex-03-3.html
+	
+今回のLed Tapeは、72W/5mなので、今回は12V電源なので、電流は、
+	72W / 12V = 6A.
+
+電力は、長さを減らす(使用するLedを減らす)と減る。
+例えば1mとすると、
+	6A/5 = 1.2A
+
+今回のDMX/PWM converterは、片側 4Ledsなので、
+	1.2A x 4ch = 4.8A
+	
+故に5AのAc adapterで容量OK.
+ただし、余裕を持って動作させる必要があるので、
+	6A x 0.7m/5m x 4ch = 3.36A (5A x 70% = 3.5A)
+であり、70cmくらいにしておくのが安全.
+	
+
+電源容量については、ちょっと文章が硬いけど、こちらも参考になる。
+	http://shop.plaza.rakuten.co.jp/illumica/diary/detail/201403080000
+	
+	
+/**************************************************
+ケーブル太さ
+**************************************************/
+今回は、tape Ledを1mとしても1 stripで1.2A.
+RGB eachだと0.4A.
+
+なので、DMX/PWM converterとTape Ledをつなぐケーブルとして、以下の0.3sqを使用.
+	http://www.akiba-led.jp/product/302
+
+以下の表から、0.4Aくらいは0.3sqで大丈夫だろう、と判断.
+	http://nanoappli.com/blog/archives/2417
+	
+	
+sq(スケア)とは断面積のことで、日本のJIS規格。
+AWGはUS規格で、対応表は以下を参照。
+	http://www.kiryu-corp.co.jp/archives/download/dl_files/dl_tech-info/AWG-%3Esq_%E5%AF%BE%E5%BF%9C%E8%A1%A8.pdf
+	
+
+以下も参照のこと。
+	電線、ケーブル、コードのサイズ表示とその種類
+	http://seppotl.web.fc2.com/zatugaku/vvf.html
+	
+	
+DMX/PWM converterに大容量のスイッチング電源を挿す場合、安定化電源とconverterの間には大電流が流れるので、接続ケーブルも気をつけて選ぶこと。
+今回は、ad adapterを使用するので、ケーブルの被覆を剥がして接続すればOK.
+
+
